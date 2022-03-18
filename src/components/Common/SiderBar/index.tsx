@@ -30,11 +30,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SiderBar() {
   const classes = useStyles();
 
-  const items = [
-    { id: 1, title: 'Dashboard' },
-    { id: 2, title: 'students' },
-  ];
-
   return (
     <List
       component="nav"
