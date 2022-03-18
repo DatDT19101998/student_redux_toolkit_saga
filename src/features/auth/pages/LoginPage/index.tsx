@@ -1,4 +1,5 @@
-import { Box, Button, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Box, Button, CircularProgress, makeStyles, Paper, Typography } from '@material-ui/core';
+import { useAppSelector } from 'app/hooks';
 import { login } from 'features/auth/authSlice';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -30,6 +31,8 @@ const LoginPage = () => {
     dispatch(login(value));
   };
 
+  const isLoading = useAppSelector((state) => state.auth.logging);
+
   return (
     <div className={classes.root}>
       <Paper elevation={1} className={classes.box} component="h1">
@@ -38,7 +41,7 @@ const LoginPage = () => {
         </Typography>
         <Box mt={4}>
           <Button onClick={handleLogin} variant="contained" color="primary">
-            Fake login
+            {isLoading && <CircularProgress size={20} color="secondary" />} &nbsp; Fake login
           </Button>
         </Box>
       </Paper>

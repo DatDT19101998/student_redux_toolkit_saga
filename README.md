@@ -1,6 +1,6 @@
 Routing
 
-authSaga
+## authSaga
 
 LOOP
 
@@ -17,3 +17,14 @@ Logout
 
 - clear token
 - redirect to Login
+
+lib: cennected-react-router
+
+## handle error & loading
+
+- loading: use base on redux store
+- error: eliminate the usage much as you can
+
+==> Considerrations
+
+- Trigger errror toast from saga
