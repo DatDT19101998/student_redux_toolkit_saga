@@ -6,21 +6,19 @@ import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div>
-      <Switch>
-        <Route path={'/login'}>
-          <LoginPage />
-        </Route>
+    <Switch>
+      <Route path={'/login'}>
+        <LoginPage />
+      </Route>
 
-        <PrivateRoute path={'/admin'}>
-          <AdminLayout />
-        </PrivateRoute>
+      <PrivateRoute path={'/admin'}>
+        <AdminLayout />
+      </PrivateRoute>
 
-        <Route>
-          <NotFound />
-        </Route>
-      </Switch>
-    </div>
+      <Route>
+        <NotFound />
+      </Route>
+    </Switch>
   );
 }
 
