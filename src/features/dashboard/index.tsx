@@ -24,14 +24,6 @@ export default function Dashboard(props: IDashboardProps) {
   const { loading, statistics, highestStudentList, lowestStudentList, rankingByCityList } =
     useSelector(dashboardSelector);
 
-  console.log('data', {
-    loading,
-    statistics,
-    highestStudentList,
-    lowestStudentList,
-    rankingByCityList,
-  });
-
   useEffect(() => {
     dispatch(fetDataDashboard());
   }, [dispatch]);

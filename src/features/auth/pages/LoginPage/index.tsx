@@ -18,6 +18,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 
 const LoginPage = () => {
+  console.log('LoginPage');
   const dispatch = useDispatch();
 
   const classes = useStyle();
