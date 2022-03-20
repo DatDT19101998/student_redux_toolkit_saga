@@ -1,4 +1,4 @@
-import { createDraftSafeSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'app/store';
 import { City, ListResponse } from 'models';
 
@@ -31,18 +31,26 @@ const citySlice = createSlice({
 });
 
 //Actions
-export const { fetchCityList, fetchCityListSuccess, fetchCityListFailure } = citySlice.actions;
+export const { fetchCityList, fetchCityListSuccess, fetchCityListFailure } =
+  citySlice.actions;
 
 // Selector
 export const cityListSelector = (state: RootState) => state.city.list;
 
-export const cityMapSelector = createDraftSafeSelector(cityListSelector, (cityList) => {
+export const cityMapSelector = createSelector(cityListSelector, (cityList) => {
   return cityList.reduce((map: { [key: string]: City }, city: City) => {
     map[city.code] = city;
 
     return map;
   }, {});
 });
+
+export const citySelectOptions = createSelector(cityListSelector, (cityList) =>
+  cityList.map((city) => ({
+    label: city.name,
+    value: city.code,
+  }))
+);
 
 //Reducer
 

@@ -25,7 +25,12 @@ export interface dashboardState {
 
 const initialState: dashboardState = {
   loading: false,
-  statistics: { maleCount: 0, femaleCount: 0, highMarkCount: 0, lowMarkCount: 0 },
+  statistics: {
+    maleCount: 0,
+    femaleCount: 0,
+    highMarkCount: 0,
+    lowMarkCount: 0,
+  },
   highestStudentList: [],
   lowestStudentList: [],
   rankingByCityList: [],

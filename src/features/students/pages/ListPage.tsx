@@ -1,4 +1,10 @@
-import { Box, Button, LinearProgress, makeStyles, Typography } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  LinearProgress,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
 import Pagination from '@material-ui/lab/Pagination';
 import studentApi from 'api/studentApi';
 import { useAppSelector } from 'app/hooks';
@@ -10,7 +16,12 @@ import { useDispatch } from 'react-redux';
 import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 import StudentFilter from '../components/Conditions';
 import StudentListTable from '../components/StudentListTable';
-import { fetchStudentList, setFilter, setFilterDebound, studentSelector } from '../studentSlice';
+import {
+  fetchStudentList,
+  setFilter,
+  setFilterDebound,
+  studentSelector,
+} from '../studentSlice';
 
 const useStyles = makeStyles((theme) => ({
   root: { position: 'relative', paddingTop: theme.spacing(1), height: 50 },

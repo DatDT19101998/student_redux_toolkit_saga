@@ -1,7 +1,11 @@
 import { put, takeLatest, call } from '@redux-saga/core/effects';
 import cityApi from 'api/cityApi';
 import { City, ListResponse } from 'models';
-import { fetchCityList, fetchCityListFailure, fetchCityListSuccess } from './citySlice';
+import {
+  fetchCityList,
+  fetchCityListFailure,
+  fetchCityListSuccess,
+} from './citySlice';
 
 function* fetchCityListSaga() {
   try {

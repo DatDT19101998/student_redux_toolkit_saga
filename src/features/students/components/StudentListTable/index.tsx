@@ -77,6 +77,7 @@ export default function StudentListTable({
             <TableRow>
               <TableCell>ID</TableCell>
               <TableCell>Name</TableCell>
+              <TableCell>Age</TableCell>
               <TableCell>Gender</TableCell>
               <TableCell>Mark</TableCell>
               <TableCell>City</TableCell>
@@ -88,6 +89,7 @@ export default function StudentListTable({
               <TableRow key={student.id}>
                 <TableCell width={310}>{student.id}∏</TableCell>
                 <TableCell>{student.name}</TableCell>
+                <TableCell>{student.age}</TableCell>
                 <TableCell>{capitalizeString(student.gender)}</TableCell>
                 <TableCell>
                   <Box color={getMarkColor(student.mark)} fontWeight="bold">
@@ -128,7 +130,9 @@ export default function StudentListTable({
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
         >
-          <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+          <DialogTitle id="alert-dialog-title">
+            {"Use Google's location service?"}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               Are you wan to delete student "{selectedStudent?.name}".

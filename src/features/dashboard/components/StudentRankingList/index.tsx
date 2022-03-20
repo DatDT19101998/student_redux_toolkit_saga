@@ -16,7 +16,9 @@ export interface StudentRandingListProps {
   studentList: Student[];
 }
 
-export default function StudentRandingList({ studentList }: StudentRandingListProps) {
+export default function StudentRandingList({
+  studentList,
+}: StudentRandingListProps) {
   const classes = useStyles();
 
   return (
