@@ -4,9 +4,11 @@ import studentApi from 'api/studentApi';
 import { Student } from 'models';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useHistory, useParams } from 'react-router-dom';
+import StudentForm from '../components/StudentForm';
 
 export default function AddEditStudentPage() {
+  const history = useHistory();
   const { studentId } = useParams<{ studentId: string }>();
   const isEdit = Boolean(studentId);
   const [student, setStudent] = useState<Student>();
@@ -25,16 +27,51 @@ export default function AddEditStudentPage() {
     })();
   }, [studentId]);
 
-  console.log('student', student);
+  const initialValues: Student = {
+    name: '',
+    age: 18,
+    mark: 0,
+    gender: 'male',
+    city: '',
+    ...student,
+  };
+
+  const handleStudentFormSubmit = async (formValue: Student) => {
+    //Call api
+    if (isEdit) {
+      await studentApi.updateStudent(formValue);
+    } else {
+      await studentApi.addStudent(formValue);
+    }
+
+    //Ridirect to list page
+    history.push('/admin/students');
+  };
+
   return (
     <Box>
       <Link to="/admin/students">
-        <Typography variant="caption" style={{ display: 'flex', alignItems: 'center' }}>
+        <Typography
+          variant="caption"
+          style={{ display: 'flex', alignItems: 'center' }}
+        >
           <ChevronLeft /> Back to student list
         </Typography>
       </Link>
 
-      <Typography variant="h4">{isEdit ? `Edit student info ` : 'Add new student'}</Typography>
+      <Typography variant="h4">
+        {isEdit ? `Edit student info ` : 'Add new student'}
+      </Typography>
+
+      {(!isEdit || Boolean(student)) && (
+        <Box mt={3}>
+          <StudentForm
+            initialValues={initialValues}
+            onSubmit={handleStudentFormSubmit}
+            isEdit={isEdit}
+          />
+        </Box>
+      )}
     </Box>
   );
 }

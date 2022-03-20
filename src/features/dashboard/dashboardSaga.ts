@@ -34,7 +34,12 @@ function* fetchStatistics() {
   const [maleCount, femaleCount, highMarkCount, lowMarkCount] = statisticsList;
 
   yield put(
-    dashboardActions.setStatistics({ maleCount, femaleCount, highMarkCount, lowMarkCount })
+    dashboardActions.setStatistics({
+      maleCount,
+      femaleCount,
+      highMarkCount,
+      lowMarkCount,
+    })
   );
 }
 
@@ -76,11 +81,13 @@ function* fetchRankingByCityList() {
 
   const responseList: Array<ListResponse<Student>> = yield all(callList);
 
-  const rankingBycityList: Array<RankingByCity> = responseList.map((x, idx) => ({
-    cityId: cityList[idx].code,
-    cityName: cityList[idx].name,
-    rankingList: x.data,
-  }));
+  const rankingBycityList: Array<RankingByCity> = responseList.map(
+    (x, idx) => ({
+      cityId: cityList[idx].code,
+      cityName: cityList[idx].name,
+      rankingList: x.data,
+    })
+  );
 
   yield put(dashboardActions.setRankingByCityList(rankingBycityList));
 }

@@ -39,15 +39,23 @@ export default function StudentFilter({
     onSearchChange(newFilter);
   };
 
-  const handleCityChange = (e: ChangeEvent<{ name?: string; value: unknown }>) => {
+  const handleCityChange = (
+    e: ChangeEvent<{ name?: string; value: unknown }>
+  ) => {
     if (!onChange) return;
     //filter is change lot of list item must reset p_page
 
-    const newFilter = { ...filter, city: e.target.value || undefined, _page: 1 };
+    const newFilter = {
+      ...filter,
+      city: e.target.value || undefined,
+      _page: 1,
+    };
 
     onChange(newFilter);
   };
-  const handleSortChange = (e: ChangeEvent<{ name?: string; value: unknown }>) => {
+  const handleSortChange = (
+    e: ChangeEvent<{ name?: string; value: unknown }>
+  ) => {
     if (!onChange) return;
     const value = e.target.value;
 
@@ -146,7 +154,12 @@ export default function StudentFilter({
         </Grid>
 
         <Grid item xs={12} md={6} lg={1}>
-          <Button variant="outlined" color="primary" fullWidth onClick={handleClearFilter}>
+          <Button
+            variant="outlined"
+            color="primary"
+            fullWidth
+            onClick={handleClearFilter}
+          >
             Clear
           </Button>
         </Grid>

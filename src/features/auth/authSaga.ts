@@ -2,7 +2,13 @@ import { take, fork, call, delay, put } from '@redux-saga/core/effects';
 import { PayloadAction } from '@reduxjs/toolkit';
 import { push } from 'connected-react-router';
 import { AUTHEN_KEY } from '../../constants';
-import { login, LoginPayload, loginSuccess, logout, loginFailure } from './authSlice';
+import {
+  login,
+  LoginPayload,
+  loginSuccess,
+  logout,
+  loginFailure,
+} from './authSlice';
 
 function* handleLogin(payload: LoginPayload) {
   try {

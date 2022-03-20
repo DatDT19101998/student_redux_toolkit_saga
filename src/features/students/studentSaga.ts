@@ -12,7 +12,10 @@ import {
 
 function* fetchStudentListSaga(action: PayloadAction<ListParams>) {
   try {
-    const response: ListResponse<Student> = yield call(studentApi.getAll, action.payload);
+    const response: ListResponse<Student> = yield call(
+      studentApi.getAll,
+      action.payload
+    );
 
     yield put(fetchStudentListSuccess(response));
   } catch (error) {

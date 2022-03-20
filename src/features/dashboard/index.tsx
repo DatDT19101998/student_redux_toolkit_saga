@@ -1,4 +1,10 @@
-import { Box, Grid, LinearProgress, makeStyles, Typography } from '@material-ui/core';
+import {
+  Box,
+  Grid,
+  LinearProgress,
+  makeStyles,
+  Typography,
+} from '@material-ui/core';
 import { ChatBubble, ChatRounded, People, PeopleAlt } from '@material-ui/icons';
 import { useAppDispatch } from 'app/hooks';
 import * as React from 'react';
@@ -21,8 +27,13 @@ export default function Dashboard(props: IDashboardProps) {
 
   const classes = useStyles();
 
-  const { loading, statistics, highestStudentList, lowestStudentList, rankingByCityList } =
-    useSelector(dashboardSelector);
+  const {
+    loading,
+    statistics,
+    highestStudentList,
+    lowestStudentList,
+    rankingByCityList,
+  } = useSelector(dashboardSelector);
 
   useEffect(() => {
     dispatch(fetDataDashboard());
