@@ -5,6 +5,7 @@ import { Student } from 'models';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import StudentForm from '../components/StudentForm';
 
 export default function AddEditStudentPage() {
@@ -43,6 +44,10 @@ export default function AddEditStudentPage() {
     } else {
       await studentApi.addStudent(formValue);
     }
+    //Toast
+    const message = ` ${isEdit ? 'Edit' : 'Add'} student  success !`;
+
+    toast(message);
 
     //Ridirect to list page
     history.push('/admin/students');
